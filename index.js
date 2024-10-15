@@ -4,12 +4,11 @@ import pg from "pg";
 import bcrypt from "bcryptjs";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
-import { all } from "axios";
 
 dotenv.config();
 
 const app = express();
-const port = process.env.PORT || 5353;
+const port = process.env.PORT || 8080;
 const uri = process.env.URI;
 
 // const db = new pg.Client({

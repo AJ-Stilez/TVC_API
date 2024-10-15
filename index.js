@@ -116,6 +116,7 @@ app.post("/login", async (req, res) => {
         // const response = await db.query("SELECT * FROM tvc_database WHERE email = $1",
         //     [email],
         // )
+        console.log(req.body)
         const response = await MyModel.findOne({ email: email });
         console.log(response);
 

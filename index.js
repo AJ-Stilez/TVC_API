@@ -42,9 +42,6 @@ const mySchema = new mongoose.Schema({
 
 
 const MyModel = mongoose.model("tvc_database", mySchema);
-// const MyModel = mongoose.model("post", mySchema);
-
-// db.connect();
 
 app.use(express.json());
 
@@ -129,15 +126,22 @@ app.post("/login", async (req, res) => {
             const {
                 password: storedHashedPassword,
             } = response;
-            const user = response;
-            const checkPassword = await bcrypt.compare(password, storedHashedPassword);
-            console.log(checkPassword);
-            if(!checkPassword){
-                res.json({error: "Incorrect Password"});
+
+            if(storedHashedPassword == "Google"){
+                res.json({error: "User signed in with Google"})
             }
-            else if(checkPassword){
-                res.json(user);
-            }          
+            else{
+                console.log(storedHashedPassword)
+                const user = response;
+                const checkPassword = await bcrypt.compare(password, storedHashedPassword);
+                console.log(checkPassword);
+                if(!checkPassword){
+                    res.json({error: "Incorrect Password"});
+                }
+                else if(checkPassword){
+                    res.json(user);
+                } 
+            }         
         } 
     }
     catch(error){

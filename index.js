@@ -6,13 +6,13 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 import cors from "cors";
 
-app.use(cors);
-
 dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 8080;
 const uri = process.env.URI;
+
+app.use(cors);
 
 // const db = new pg.Client({
 //     user: "postgres",
